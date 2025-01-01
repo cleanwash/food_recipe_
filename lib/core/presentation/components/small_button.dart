@@ -2,20 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:food_recipe/ui/color_styles.dart';
 import 'package:food_recipe/ui/text_styles.dart';
 
-class BigButton extends StatefulWidget {
+class SmallButton extends StatefulWidget {
   final String text;
   final void Function() onPressed;
-  const BigButton(
+  const SmallButton(
     this.text, {
     super.key,
     required this.onPressed,
   });
 
   @override
-  State<BigButton> createState() => _BigButtonState();
+  State<SmallButton> createState() => _SmallButtonState();
 }
 
-class _BigButtonState extends State<BigButton> {
+class _SmallButtonState extends State<SmallButton> {
   bool isPressed = false;
   @override
   Widget build(BuildContext context) {
@@ -37,7 +37,7 @@ class _BigButtonState extends State<BigButton> {
         });
       },
       child: Container(
-          height: 60,
+          height: 37,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             color: isPressed ? ColorStyles.gray4 : ColorStyles.primary100,
@@ -45,17 +45,12 @@ class _BigButtonState extends State<BigButton> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(
-                width: 114,
-                child: Text(
-                  widget.text,
-                  style: TextStyles.normalTextBold.copyWith(
-                    color: ColorStyles.white,
-                  ),
+              Text(
+                widget.text,
+                style: TextStyles.normalTextBold.copyWith(
+                  color: ColorStyles.white,
                 ),
               ),
-              SizedBox(width: 11),
-              Icon(Icons.arrow_forward, size: 20, color: ColorStyles.white),
             ],
           )),
     );

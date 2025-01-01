@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_recipe/core/presentation/components/big_button.dart';
+import 'package:food_recipe/core/presentation/components/input_field.dart';
 import 'package:food_recipe/core/presentation/components/medium_button.dart';
 import 'package:food_recipe/core/presentation/components/small_button.dart';
 import 'package:food_recipe/ui/text_styles.dart';
@@ -64,6 +65,10 @@ class MyHomePage extends StatelessWidget {
                   print('Small');
                 },
               ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: InputField(label: 'Label', placeholder: 'placeholder'),
             ),
           ],
         ));

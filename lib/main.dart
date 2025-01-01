@@ -5,6 +5,7 @@ import 'package:food_recipe/core/presentation/components/input_field.dart';
 import 'package:food_recipe/core/presentation/components/medium_button.dart';
 import 'package:food_recipe/core/presentation/components/rating_button.dart';
 import 'package:food_recipe/core/presentation/components/small_button.dart';
+import 'package:food_recipe/core/presentation/components/two_tab.dart';
 import 'package:food_recipe/ui/text_styles.dart';
 
 void main() {
@@ -45,27 +46,21 @@ class MyHomePage extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: BigButton(
                 'Big Button',
-                onPressed: () {
-                  print('Big Button');
-                },
+                onPressed: () {},
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: MediumButton(
                 'Medium',
-                onPressed: () {
-                  print('Medium');
-                },
+                onPressed: () {},
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: SmallButton(
                 'Small Button',
-                onPressed: () {
-                  print('Small');
-                },
+                onPressed: () {},
               ),
             ),
             Padding(
@@ -75,7 +70,14 @@ class MyHomePage extends StatelessWidget {
             FilterButton('하오츠', isSelected: true),
             FilterButton('하오츠걸'),
             RatingButton('text'),
-            RatingButton('text', isSelected: true)
+            RatingButton('text', isSelected: true),
+            TwoTab(
+              labels: ['label1', 'label2'],
+              selectedIndex: 1,
+              onChange: (int index) {
+                print('TwoTab: $index');
+              },
+            )
           ],
         ));
   }

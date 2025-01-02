@@ -6,6 +6,7 @@ import 'package:food_recipe/core/presentation/components/medium_button.dart';
 import 'package:food_recipe/core/presentation/components/rating_button.dart';
 import 'package:food_recipe/core/presentation/components/small_button.dart';
 import 'package:food_recipe/core/presentation/components/two_tab.dart';
+import 'package:food_recipe/core/presentation/dialogs/rating_dialog.dart';
 import 'package:food_recipe/ui/text_styles.dart';
 
 void main() {
@@ -42,6 +43,22 @@ class MyHomePage extends StatelessWidget {
         ),
         body: ListView(
           children: [
+            ElevatedButton(
+              onPressed: () {
+                showDialog(
+                    context: context,
+                    builder: (_) {
+                      return RatingDialog(
+                          title: 'title',
+                          score: 3,
+                          actionName: 'send',
+                          onChange: (score) {
+                            print('score는 $score');
+                          });
+                    });
+              },
+              child: Text('RatingDialog'),
+            ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: BigButton(
@@ -77,7 +94,7 @@ class MyHomePage extends StatelessWidget {
               onChange: (int index) {
                 print('TwoTab: $index');
               },
-            )
+            ),
           ],
         ));
   }

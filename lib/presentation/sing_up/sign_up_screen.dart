@@ -5,7 +5,11 @@ import 'package:food_recipe/ui/color_styles.dart';
 import 'package:food_recipe/ui/text_styles.dart';
 
 class SignUpScreen extends StatefulWidget {
-  const SignUpScreen({super.key});
+  final void Function() onTapSignIn;
+  const SignUpScreen({
+    super.key,
+    required this.onTapSignIn,
+  });
 
   @override
   State<SignUpScreen> createState() => _SignUpScreenState();
@@ -122,15 +126,23 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ],
                 ),
                 SizedBox(height: 20),
-                Text(
-                  "Already a member?",
-                  style: TextStyles.smallTextBold,
-                ),
-                Text(
-                  "Sign In",
-                  style: TextStyles.smallTextBold.copyWith(
-                    color: ColorStyles.secondary100,
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Already a member?",
+                      style: TextStyles.smallTextBold,
+                    ),
+                    GestureDetector(
+                      onTap: widget.onTapSignIn,
+                      child: Text(
+                        "Sign In",
+                        style: TextStyles.smallTextBold.copyWith(
+                          color: ColorStyles.secondary100,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),

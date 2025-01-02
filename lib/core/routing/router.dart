@@ -10,11 +10,13 @@ import 'package:food_recipe/presentation/splash/splash_screen.dart';
 import 'package:go_router/go_router.dart';
 
 final router = GoRouter(
-  initialLocation: '/SignUp',
+  initialLocation: '/Splash',
   routes: [
     GoRoute(
       path: '/SignUp',
-      builder: (context, state) => SignUpScreen(),
+      builder: (context, state) => SignUpScreen(
+        onTapSignIn: () => context.go('/SignIn'),
+      ),
     ),
     GoRoute(
       path: '/Splash',
@@ -24,7 +26,10 @@ final router = GoRouter(
     ),
     GoRoute(
       path: '/SignIn',
-      builder: (context, state) => SignInScreen(),
+      builder: (context, state) => SignInScreen(
+        onTapSignUp: () => context.go('/SignUp'),
+        onTapSignIn: () => context.go('/SavedRecipes'),
+      ),
     ),
     GoRoute(
       path: '/SavedRecipes',

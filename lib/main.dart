@@ -7,11 +7,8 @@ import 'package:food_recipe/core/presentation/components/rating_button.dart';
 import 'package:food_recipe/core/presentation/components/small_button.dart';
 import 'package:food_recipe/core/presentation/components/two_tab.dart';
 import 'package:food_recipe/core/presentation/dialogs/rating_dialog.dart';
-import 'package:food_recipe/data/repository/mock_bookmar_repository_impl.dart';
-import 'package:food_recipe/data/repository/mock_recipe_repository_impl.dart';
-import 'package:food_recipe/domain/model/recipe.dart';
-import 'package:food_recipe/domain/use_case/get_saved_recipes_use_case.dart';
-import 'package:food_recipe/presentation/saved_recipes/saved_recipes_screen.dart';
+import 'package:food_recipe/core/routing/router.dart';
+
 import 'package:food_recipe/ui/text_styles.dart';
 
 void main() {
@@ -23,28 +20,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      routerConfig: router,
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.light(),
         scaffoldBackgroundColor: Colors.white,
         useMaterial3: true,
       ),
-      home: FutureBuilder<List<Recipe>>(
-          future: GetSavedRecipesUseCase(
-                  recipeRepository: MockRecipeRepositoryImpl(),
-                  bookMarkRepository: MockBookmarRepositoryImpl())
-              .execute(),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return Center(child: CircularProgressIndicator());
-            }
-            final recipes = snapshot.data!;
-
-            return SavedRecipesScreen(
-              recipes: recipes,
-            );
-          }),
     );
   }
 }

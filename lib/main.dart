@@ -7,6 +7,7 @@ import 'package:food_recipe/core/presentation/components/rating_button.dart';
 import 'package:food_recipe/core/presentation/components/small_button.dart';
 import 'package:food_recipe/core/presentation/components/two_tab.dart';
 import 'package:food_recipe/core/presentation/dialogs/rating_dialog.dart';
+import 'package:food_recipe/presentation/sign_in/sign_in_screen.dart';
 import 'package:food_recipe/ui/text_styles.dart';
 
 void main() {
@@ -19,13 +20,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(),
-    );
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
+        home: const SignInScreen());
   }
 }
 

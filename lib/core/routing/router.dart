@@ -5,15 +5,22 @@ import 'package:food_recipe/domain/model/recipe.dart';
 import 'package:food_recipe/domain/use_case/get_saved_recipes_use_case.dart';
 import 'package:food_recipe/presentation/saved_recipes/saved_recipes_screen.dart';
 import 'package:food_recipe/presentation/sign_in/sign_in_screen.dart';
+import 'package:food_recipe/presentation/sing_up/sign_up_screen.dart';
 import 'package:food_recipe/presentation/splash/splash_screen.dart';
 import 'package:go_router/go_router.dart';
 
 final router = GoRouter(
-  initialLocation: '/Splash',
+  initialLocation: '/SignUp',
   routes: [
     GoRoute(
+      path: '/SignUp',
+      builder: (context, state) => SignUpScreen(),
+    ),
+    GoRoute(
       path: '/Splash',
-      builder: (context, state) => SplashScreen(),
+      builder: (context, state) => SplashScreen(
+        onTapStartCooking: () => context.go('/SignIn'),
+      ),
     ),
     GoRoute(
       path: '/SignIn',

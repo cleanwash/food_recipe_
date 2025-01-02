@@ -1,4 +1,4 @@
-import 'package:food_recipe/core/domain/model/ingredient.dart';
+import 'package:food_recipe/domain/model/ingredient.dart';
 
 class RecipeIngredient {
   final Ingredient ingredient;
@@ -21,5 +21,10 @@ class RecipeIngredient {
       'ingredient': ingredient.toJson(),
       'amount': amount,
     };
+  }
+
+  @override
+  String toString() {
+    return 'RecipeIngredient(ingredient: $ingredient, amount: $amount)';
   }
 }

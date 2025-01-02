@@ -1,5 +1,5 @@
-import 'package:food_recipe/core/domain/model/recipe.dart';
-import 'package:food_recipe/core/domain/repository/recipe_repository.dart';
+import 'package:food_recipe/domain/model/recipe.dart';
+import 'package:food_recipe/domain/repository/recipe_repository.dart';
 
 class MockRecipeRepositoryImpl implements RecipeRepository {
   final _mockData = {
@@ -308,6 +308,7 @@ class MockRecipeRepositoryImpl implements RecipeRepository {
 
   @override
   Future<List<Recipe>> getRecipes() async {
+    await Future.delayed(const Duration(microseconds: 500));
     final recipes = _mockData['recipes']!;
     return recipes.map((e) => Recipe.fromJson(e)).toList();
   }

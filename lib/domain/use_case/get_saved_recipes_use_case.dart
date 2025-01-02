@@ -1,6 +1,6 @@
-import 'package:food_recipe/core/domain/model/recipe.dart';
-import 'package:food_recipe/core/domain/repository/book_mark_repository.dart';
-import 'package:food_recipe/core/domain/repository/recipe_repository.dart';
+import 'package:food_recipe/domain/model/recipe.dart';
+import 'package:food_recipe/domain/repository/book_mark_repository.dart';
+import 'package:food_recipe/domain/repository/recipe_repository.dart';
 
 class GetSavedRecipesUseCase {
   final RecipeRepository _recipeRepository;

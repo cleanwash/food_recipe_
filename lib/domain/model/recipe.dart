@@ -1,4 +1,4 @@
-import 'package:food_recipe/core/domain/model/recipe_ingredient.dart';
+import 'package:food_recipe/domain/model/recipe_ingredient.dart';
 
 class Recipe {
   final int id;
@@ -47,5 +47,10 @@ class Recipe {
       'rating': rating,
       'ingredients': ingredients.map((i) => i.toJson()).toList(),
     };
+  }
+
+  @override
+  String toString() {
+    return 'Recipe(id: $id, category: $category, name: $name, chef: $chef, time: $time, rating: $rating, ingredients: $ingredients)';
   }
 }

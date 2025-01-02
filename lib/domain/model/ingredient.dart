@@ -24,4 +24,9 @@ class Ingredient {
       'image': image,
     };
   }
+
+  @override
+  String toString() {
+    return 'Ingredient(id: $id, name: $name, image: $image)';
+  }
 }

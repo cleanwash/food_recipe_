@@ -1,15 +1,16 @@
-import 'package:food_recipe/core/domain/repository/book_mark_repository.dart';
+import 'package:food_recipe/domain/repository/book_mark_repository.dart';
 
 class MockBookmarRepositoryImpl implements BookMarkRepository {
-  final _ids = <int>[2, 4];
-  @override
-  Future<void> clear() async {
-    _ids.clear();
-  }
+  final _ids = <int>{2, 3, 4};
 
   @override
   Future<List<int>> getBookmarkIds() async {
     return _ids.toList();
+  }
+
+  @override
+  Future<void> clear() async {
+    _ids.clear();
   }
 
   @override

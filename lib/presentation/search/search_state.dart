@@ -9,6 +9,8 @@ class SearchState with _$SearchState {
   factory SearchState({
     @Default([]) List<Recipe> recipes,
     @Default(false) bool isLoading,
+    @Default('Recent Search') String serachTitle,
+    @Default('') String resultsCount,
   }) = _SearchState;
 
   factory SearchState.fromJson(Map<String, dynamic> json) =>

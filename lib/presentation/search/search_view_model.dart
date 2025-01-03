@@ -31,11 +31,12 @@ class SearchViewModel with ChangeNotifier {
     _state = state.copyWith(isLoading: true);
     notifyListeners();
 
-    final results = await _searchRecipesUseCase.execute(query);
+    final recipes = await _searchRecipesUseCase.execute(query);
     _state = state.copyWith(
-      recipes: results,
-      isLoading: false,
-    );
+        recipes: recipes,
+        isLoading: false,
+        serachTitle: 'Seearch Result',
+        resultsCount: '${recipes.length} results');
     notifyListeners();
   }
 }

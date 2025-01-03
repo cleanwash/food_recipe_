@@ -13,10 +13,14 @@ _$SearchStateImpl _$$SearchStateImplFromJson(Map<String, dynamic> json) =>
               .toList() ??
           const [],
       isLoading: json['isLoading'] as bool? ?? false,
+      serachTitle: json['serachTitle'] as String? ?? 'Recent Search',
+      resultsCount: json['resultsCount'] as String? ?? '',
     );
 
 Map<String, dynamic> _$$SearchStateImplToJson(_$SearchStateImpl instance) =>
     <String, dynamic>{
       'recipes': instance.recipes,
       'isLoading': instance.isLoading,
+      'serachTitle': instance.serachTitle,
+      'resultsCount': instance.resultsCount,
     };

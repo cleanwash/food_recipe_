@@ -1,9 +1,11 @@
 import 'package:food_recipe/core/routing/route_paths.dart';
-import 'package:food_recipe/presentation/home/home_screen.dart';
+import 'package:food_recipe/main.dart';
+import 'package:food_recipe/presentation/home/screen/home_root.dart';
 import 'package:food_recipe/presentation/main/main_screen.dart';
 import 'package:food_recipe/presentation/notifications/notifications_screen.dart';
 import 'package:food_recipe/presentation/profie/profile_screen.dart';
 import 'package:food_recipe/presentation/saved_recipes/screen/saved_recipes_root.dart';
+import 'package:food_recipe/presentation/search/screen/search_root.dart';
 import 'package:food_recipe/presentation/sign_in/sign_in_screen.dart';
 import 'package:food_recipe/presentation/sing_up/sign_up_screen.dart';
 import 'package:food_recipe/presentation/splash/splash_screen.dart';
@@ -12,6 +14,10 @@ import 'package:go_router/go_router.dart';
 final router = GoRouter(
   initialLocation: RoutePaths.splash,
   routes: [
+    GoRoute(
+      path: RoutePaths.test,
+      builder: (context, state) => MyHomePage(),
+    ),
     GoRoute(
       path: RoutePaths.signUp,
       builder: (context, state) => SignUpScreen(
@@ -31,6 +37,10 @@ final router = GoRouter(
         onTapSignIn: () => context.go(RoutePaths.home),
       ),
     ),
+    GoRoute(
+      path: RoutePaths.search,
+      builder: (context, state) => SearchRoot(),
+    ),
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) {
         return MainScreen(
@@ -48,7 +58,7 @@ final router = GoRouter(
           routes: [
             GoRoute(
               path: RoutePaths.home,
-              builder: (context, state) => HomeScreen(),
+              builder: (context, state) => HomeRoot(),
             ),
           ],
         ),

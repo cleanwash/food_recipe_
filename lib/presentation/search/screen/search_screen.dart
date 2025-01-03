@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:food_recipe/core/presentation/components/recipe_card.dart';
 import 'package:food_recipe/core/presentation/components/recipe_grid_item.dart';
 import 'package:food_recipe/core/presentation/components/search_input_field.dart';
 import 'package:food_recipe/presentation/search/search_state.dart';
@@ -8,9 +7,12 @@ import 'package:food_recipe/ui/text_styles.dart';
 
 class SearchScreen extends StatelessWidget {
   final SearchState state;
+  final void Function(String query)? onChanged;
+
   const SearchScreen({
     super.key,
     required this.state,
+    this.onChanged,
   });
 
   @override
@@ -34,6 +36,7 @@ class SearchScreen extends StatelessWidget {
                   Expanded(
                     child: SearchInputField(
                       placeholder: 'Search Recipe',
+                      onChanged: onChanged,
                     ),
                   ),
                   Container(

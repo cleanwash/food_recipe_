@@ -14,19 +14,14 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-SearchState _$SearchStateFromJson(Map<String, dynamic> json) {
-  return _SearchState.fromJson(json);
-}
-
 /// @nodoc
 mixin _$SearchState {
   List<Recipe> get recipes => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
-  String get serachTitle => throw _privateConstructorUsedError;
+  String get searchTitle => throw _privateConstructorUsedError;
   String get resultsCount => throw _privateConstructorUsedError;
-
-  /// Serializes this SearchState to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  FilterState get filterState => throw _privateConstructorUsedError;
+  String get query => throw _privateConstructorUsedError;
 
   /// Create a copy of SearchState
   /// with the given fields replaced by the non-null parameter values.
@@ -44,8 +39,10 @@ abstract class $SearchStateCopyWith<$Res> {
   $Res call(
       {List<Recipe> recipes,
       bool isLoading,
-      String serachTitle,
-      String resultsCount});
+      String searchTitle,
+      String resultsCount,
+      FilterState filterState,
+      String query});
 }
 
 /// @nodoc
@@ -65,8 +62,10 @@ class _$SearchStateCopyWithImpl<$Res, $Val extends SearchState>
   $Res call({
     Object? recipes = null,
     Object? isLoading = null,
-    Object? serachTitle = null,
+    Object? searchTitle = null,
     Object? resultsCount = null,
+    Object? filterState = null,
+    Object? query = null,
   }) {
     return _then(_value.copyWith(
       recipes: null == recipes
@@ -77,13 +76,21 @@ class _$SearchStateCopyWithImpl<$Res, $Val extends SearchState>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      serachTitle: null == serachTitle
-          ? _value.serachTitle
-          : serachTitle // ignore: cast_nullable_to_non_nullable
+      searchTitle: null == searchTitle
+          ? _value.searchTitle
+          : searchTitle // ignore: cast_nullable_to_non_nullable
               as String,
       resultsCount: null == resultsCount
           ? _value.resultsCount
           : resultsCount // ignore: cast_nullable_to_non_nullable
+              as String,
+      filterState: null == filterState
+          ? _value.filterState
+          : filterState // ignore: cast_nullable_to_non_nullable
+              as FilterState,
+      query: null == query
+          ? _value.query
+          : query // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -100,8 +107,10 @@ abstract class _$$SearchStateImplCopyWith<$Res>
   $Res call(
       {List<Recipe> recipes,
       bool isLoading,
-      String serachTitle,
-      String resultsCount});
+      String searchTitle,
+      String resultsCount,
+      FilterState filterState,
+      String query});
 }
 
 /// @nodoc
@@ -119,8 +128,10 @@ class __$$SearchStateImplCopyWithImpl<$Res>
   $Res call({
     Object? recipes = null,
     Object? isLoading = null,
-    Object? serachTitle = null,
+    Object? searchTitle = null,
     Object? resultsCount = null,
+    Object? filterState = null,
+    Object? query = null,
   }) {
     return _then(_$SearchStateImpl(
       recipes: null == recipes
@@ -131,30 +142,38 @@ class __$$SearchStateImplCopyWithImpl<$Res>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      serachTitle: null == serachTitle
-          ? _value.serachTitle
-          : serachTitle // ignore: cast_nullable_to_non_nullable
+      searchTitle: null == searchTitle
+          ? _value.searchTitle
+          : searchTitle // ignore: cast_nullable_to_non_nullable
               as String,
       resultsCount: null == resultsCount
           ? _value.resultsCount
           : resultsCount // ignore: cast_nullable_to_non_nullable
+              as String,
+      filterState: null == filterState
+          ? _value.filterState
+          : filterState // ignore: cast_nullable_to_non_nullable
+              as FilterState,
+      query: null == query
+          ? _value.query
+          : query // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _$SearchStateImpl implements _SearchState {
   _$SearchStateImpl(
       {final List<Recipe> recipes = const [],
       this.isLoading = false,
-      this.serachTitle = 'Recent Search',
-      this.resultsCount = ''})
+      this.searchTitle = 'Recent Search',
+      this.resultsCount = '',
+      this.filterState =
+          const FilterState(time: 'All', rate: 1, category: 'All'),
+      this.query = ''})
       : _recipes = recipes;
-
-  factory _$SearchStateImpl.fromJson(Map<String, dynamic> json) =>
-      _$$SearchStateImplFromJson(json);
 
   final List<Recipe> _recipes;
   @override
@@ -170,14 +189,20 @@ class _$SearchStateImpl implements _SearchState {
   final bool isLoading;
   @override
   @JsonKey()
-  final String serachTitle;
+  final String searchTitle;
   @override
   @JsonKey()
   final String resultsCount;
+  @override
+  @JsonKey()
+  final FilterState filterState;
+  @override
+  @JsonKey()
+  final String query;
 
   @override
   String toString() {
-    return 'SearchState(recipes: $recipes, isLoading: $isLoading, serachTitle: $serachTitle, resultsCount: $resultsCount)';
+    return 'SearchState(recipes: $recipes, isLoading: $isLoading, searchTitle: $searchTitle, resultsCount: $resultsCount, filterState: $filterState, query: $query)';
   }
 
   @override
@@ -188,20 +213,24 @@ class _$SearchStateImpl implements _SearchState {
             const DeepCollectionEquality().equals(other._recipes, _recipes) &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
-            (identical(other.serachTitle, serachTitle) ||
-                other.serachTitle == serachTitle) &&
+            (identical(other.searchTitle, searchTitle) ||
+                other.searchTitle == searchTitle) &&
             (identical(other.resultsCount, resultsCount) ||
-                other.resultsCount == resultsCount));
+                other.resultsCount == resultsCount) &&
+            (identical(other.filterState, filterState) ||
+                other.filterState == filterState) &&
+            (identical(other.query, query) || other.query == query));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_recipes),
       isLoading,
-      serachTitle,
-      resultsCount);
+      searchTitle,
+      resultsCount,
+      filterState,
+      query);
 
   /// Create a copy of SearchState
   /// with the given fields replaced by the non-null parameter values.
@@ -210,33 +239,29 @@ class _$SearchStateImpl implements _SearchState {
   @pragma('vm:prefer-inline')
   _$$SearchStateImplCopyWith<_$SearchStateImpl> get copyWith =>
       __$$SearchStateImplCopyWithImpl<_$SearchStateImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$SearchStateImplToJson(
-      this,
-    );
-  }
 }
 
 abstract class _SearchState implements SearchState {
   factory _SearchState(
       {final List<Recipe> recipes,
       final bool isLoading,
-      final String serachTitle,
-      final String resultsCount}) = _$SearchStateImpl;
-
-  factory _SearchState.fromJson(Map<String, dynamic> json) =
-      _$SearchStateImpl.fromJson;
+      final String searchTitle,
+      final String resultsCount,
+      final FilterState filterState,
+      final String query}) = _$SearchStateImpl;
 
   @override
   List<Recipe> get recipes;
   @override
   bool get isLoading;
   @override
-  String get serachTitle;
+  String get searchTitle;
   @override
   String get resultsCount;
+  @override
+  FilterState get filterState;
+  @override
+  String get query;
 
   /// Create a copy of SearchState
   /// with the given fields replaced by the non-null parameter values.

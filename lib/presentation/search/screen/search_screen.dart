@@ -8,11 +8,13 @@ import 'package:food_recipe/ui/text_styles.dart';
 class SearchScreen extends StatelessWidget {
   final SearchState state;
   final void Function(String query)? onChanged;
+  final void Function()? onTapFilter;
 
   const SearchScreen({
     super.key,
     required this.state,
     this.onChanged,
+    this.onTapFilter,
   });
 
   @override
@@ -46,9 +48,12 @@ class SearchScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(20),
                       color: ColorStyles.primary100,
                     ),
-                    child: Icon(
-                      Icons.tune,
-                      color: Colors.white,
+                    child: GestureDetector(
+                      onTap: onTapFilter,
+                      child: Icon(
+                        Icons.tune,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ],
@@ -56,7 +61,7 @@ class SearchScreen extends StatelessWidget {
               SizedBox(height: 20),
               Row(
                 children: [
-                  Text(state.serachTitle, style: TextStyles.normalTextBold),
+                  Text(state.searchTitle, style: TextStyles.normalTextBold),
                   Spacer(),
                   Text(state.resultsCount,
                       style: TextStyles.smallerTextRegular.copyWith(

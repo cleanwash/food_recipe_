@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_recipe/core/di/di_setup.dart';
 import 'package:food_recipe/core/presentation/components/big_button.dart';
 import 'package:food_recipe/core/presentation/components/filter_button.dart';
 import 'package:food_recipe/core/presentation/components/input_field.dart';
@@ -13,6 +14,7 @@ import 'package:food_recipe/core/routing/router.dart';
 import 'package:food_recipe/ui/text_styles.dart';
 
 void main() {
+  diSetup();
   runApp(const MyApp());
 }
 

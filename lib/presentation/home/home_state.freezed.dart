@@ -22,6 +22,7 @@ HomeState _$HomeStateFromJson(Map<String, dynamic> json) {
 mixin _$HomeState {
   List<String> get categories => throw _privateConstructorUsedError;
   String get selectedCategory => throw _privateConstructorUsedError;
+  List<Recipe> get dishes => throw _privateConstructorUsedError;
 
   /// Serializes this HomeState to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -38,7 +39,8 @@ abstract class $HomeStateCopyWith<$Res> {
   factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) then) =
       _$HomeStateCopyWithImpl<$Res, HomeState>;
   @useResult
-  $Res call({List<String> categories, String selectedCategory});
+  $Res call(
+      {List<String> categories, String selectedCategory, List<Recipe> dishes});
 }
 
 /// @nodoc
@@ -58,6 +60,7 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
   $Res call({
     Object? categories = null,
     Object? selectedCategory = null,
+    Object? dishes = null,
   }) {
     return _then(_value.copyWith(
       categories: null == categories
@@ -68,6 +71,10 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
           ? _value.selectedCategory
           : selectedCategory // ignore: cast_nullable_to_non_nullable
               as String,
+      dishes: null == dishes
+          ? _value.dishes
+          : dishes // ignore: cast_nullable_to_non_nullable
+              as List<Recipe>,
     ) as $Val);
   }
 }
@@ -80,7 +87,8 @@ abstract class _$$HomeStateImplCopyWith<$Res>
       __$$HomeStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<String> categories, String selectedCategory});
+  $Res call(
+      {List<String> categories, String selectedCategory, List<Recipe> dishes});
 }
 
 /// @nodoc
@@ -98,6 +106,7 @@ class __$$HomeStateImplCopyWithImpl<$Res>
   $Res call({
     Object? categories = null,
     Object? selectedCategory = null,
+    Object? dishes = null,
   }) {
     return _then(_$HomeStateImpl(
       categories: null == categories
@@ -108,6 +117,10 @@ class __$$HomeStateImplCopyWithImpl<$Res>
           ? _value.selectedCategory
           : selectedCategory // ignore: cast_nullable_to_non_nullable
               as String,
+      dishes: null == dishes
+          ? _value._dishes
+          : dishes // ignore: cast_nullable_to_non_nullable
+              as List<Recipe>,
     ));
   }
 }
@@ -116,8 +129,11 @@ class __$$HomeStateImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$HomeStateImpl implements _HomeState {
   _$HomeStateImpl(
-      {final List<String> categories = const [], this.selectedCategory = 'All'})
-      : _categories = categories;
+      {final List<String> categories = const [],
+      this.selectedCategory = 'All',
+      final List<Recipe> dishes = const []})
+      : _categories = categories,
+        _dishes = dishes;
 
   factory _$HomeStateImpl.fromJson(Map<String, dynamic> json) =>
       _$$HomeStateImplFromJson(json);
@@ -134,10 +150,18 @@ class _$HomeStateImpl implements _HomeState {
   @override
   @JsonKey()
   final String selectedCategory;
+  final List<Recipe> _dishes;
+  @override
+  @JsonKey()
+  List<Recipe> get dishes {
+    if (_dishes is EqualUnmodifiableListView) return _dishes;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_dishes);
+  }
 
   @override
   String toString() {
-    return 'HomeState(categories: $categories, selectedCategory: $selectedCategory)';
+    return 'HomeState(categories: $categories, selectedCategory: $selectedCategory, dishes: $dishes)';
   }
 
   @override
@@ -148,13 +172,17 @@ class _$HomeStateImpl implements _HomeState {
             const DeepCollectionEquality()
                 .equals(other._categories, _categories) &&
             (identical(other.selectedCategory, selectedCategory) ||
-                other.selectedCategory == selectedCategory));
+                other.selectedCategory == selectedCategory) &&
+            const DeepCollectionEquality().equals(other._dishes, _dishes));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_categories), selectedCategory);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_categories),
+      selectedCategory,
+      const DeepCollectionEquality().hash(_dishes));
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.
@@ -175,7 +203,8 @@ class _$HomeStateImpl implements _HomeState {
 abstract class _HomeState implements HomeState {
   factory _HomeState(
       {final List<String> categories,
-      final String selectedCategory}) = _$HomeStateImpl;
+      final String selectedCategory,
+      final List<Recipe> dishes}) = _$HomeStateImpl;
 
   factory _HomeState.fromJson(Map<String, dynamic> json) =
       _$HomeStateImpl.fromJson;
@@ -184,6 +213,8 @@ abstract class _HomeState implements HomeState {
   List<String> get categories;
   @override
   String get selectedCategory;
+  @override
+  List<Recipe> get dishes;
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.

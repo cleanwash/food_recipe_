@@ -9,6 +9,7 @@ import 'package:food_recipe/domain/repository/book_mark_repository.dart';
 import 'package:food_recipe/domain/repository/recent_search_recipe_repository.dart';
 import 'package:food_recipe/domain/repository/recipe_repository.dart';
 import 'package:food_recipe/domain/use_case/get_categories_use_cse.dart';
+import 'package:food_recipe/domain/use_case/get_dishes_by_category_use_case.dart';
 import 'package:food_recipe/domain/use_case/get_saved_recipes_use_case.dart';
 import 'package:food_recipe/domain/use_case/search_recipes_use_case.dart';
 import 'package:food_recipe/presentation/home/home_view_model.dart';
@@ -49,6 +50,10 @@ void diSetup() {
       GetCategoriesUseCse(recipeRepository: getIt()));
 
   getIt.registerFactory<HomeViewModel>(
-    () => HomeViewModel(getCategoriesUseCse: getIt()),
+    () => HomeViewModel(
+        getCategoriesUseCse: getIt(), getDishesByCategoryUseCase: getIt()),
   );
+  //dish
+  getIt.registerSingleton<GetDishesByCategoryUseCase>(
+      GetDishesByCategoryUseCase(recipeRepository: getIt()));
 }
